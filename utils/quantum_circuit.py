@@ -3,11 +3,11 @@ from qiskit.quantum_info import Statevector, state_fidelity
 from qiskit.result import Result
 from qiskit_aer import AerSimulator
 
-def prepare_state(state: str, label: str) -> QuantumCircuit:
-    qc = QuantumCircuit(3)
+def prepare_state(state: str, label: str):
+    qc = QuantumCircuit(len(state))
 
     # prepare information state for Alice
-    for i in range(3):
+    for i in range(len(state)):
         if state[i] == "1":
             qc.x(i)
 
