@@ -17,10 +17,10 @@ def prepare_state(state: str, label: str):
 def get_state_vector(qc: QuantumCircuit) -> Statevector:
     return Statevector.from_instruction(qc)
 
-def simulate(qc: QuantumCircuit) -> Result:
+def simulate(qc: QuantumCircuit, shots=8192) -> Result:
     backend = AerSimulator()
     qc_aer = transpile(qc, backend)
-    return backend.run(qc_aer, shots=8192).result()
+    return backend.run(qc_aer, shots=shots).result()
 
 def draw_state(state: Statevector, no_amp = True):
     state = state.reverse_qargs()
